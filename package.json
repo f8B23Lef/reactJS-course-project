@@ -8,7 +8,8 @@
     "build": "export NODE_ENV=development && webpack --progress",
     "build:prod": "export NODE_ENV=production && webpack --progress",
     "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix"
+    "lint:fix": "eslint ./src --fix",
+    "prepare": "husky install"
   },
   "author": "Malash IM",
   "license": "ISC",
@@ -24,8 +25,10 @@
     "eslint": "^8.35.0",
     "eslint-config-airbnb": "^19.0.4",
     "html-webpack-plugin": "^5.5.0",
+    "lint-staged": "^13.2.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "husky": "^8.0.0"
   }
 }
