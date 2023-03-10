@@ -20,9 +20,9 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-        }
+        },
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -32,6 +32,6 @@ module.exports = {
   optimization: {
     splitChunks: {
       chunks: 'all',
-    }
+    },
   },
-}
+};
