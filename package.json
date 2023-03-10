@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production"
+    "start": "webpack-dev-server",
+    "build": "export NODE_ENV=development && webpack --progress",
+    "build:prod": "export NODE_ENV=production && webpack --progress"
   },
   "author": "Malash IM",
   "license": "ISC",
