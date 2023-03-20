@@ -1,0 +1,19 @@
+@import '../../styles/index.scss';
+
+.sort {
+  display: flex;
+  font-size: 14px;
+
+  p {
+    padding: 5px;
+    opacity: 0.6;
+  }
+
+  select {
+    color: $white;
+    border: none;
+    background-color: $dark-grey;
+    outline: none;
+    text-transform: uppercase;
+  }
+}
