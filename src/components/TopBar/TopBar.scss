@@ -1,0 +1,20 @@
+@import '../../styles/index.scss';
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 35px;
+
+  button {
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    color: $red;
+    background-color: $translucent-grey;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $light-grey;
+    }
+  }
+}

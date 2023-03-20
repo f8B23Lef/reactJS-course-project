@@ -24,6 +24,7 @@
       // e - exception
       "exceptions": ["i", "j", "k", "v", "a", "b", "e"]
     }],
-    "import/no-extraneous-dependencies": [2, {"devDependencies": true}]
+    "import/no-extraneous-dependencies": [2, {"devDependencies": true}],
+    "no-plusplus": [2, { "allowForLoopAfterthoughts": true }]
   }
 }

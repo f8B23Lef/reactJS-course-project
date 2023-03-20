@@ -1,0 +1,27 @@
+@import '../../styles/index.scss';
+
+.genre-toggle {
+  display: flex;
+
+  button {
+    margin: 0 10px;
+    padding: 5px 0;
+    cursor: pointer;
+    opacity: 0.6;
+    background-color: $dark-grey;
+    color: $white;
+    border: 0;
+    outline: 0;
+    text-transform: uppercase;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &.active {
+      margin-bottom: -2px;
+      border-bottom: 2px solid #f65621;
+      opacity: 1;
+    }
+  }
+}
