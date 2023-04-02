@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { KEYS } from '../../utils/constants';
 import './SearchBar.scss';
 
 export default function SearchBar() {
@@ -12,7 +13,7 @@ export default function SearchBar() {
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === KEYS.ENTER_KEY) {
       searchQuery();
     }
   };
