@@ -1,42 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import ThreeDotsMenu from '../ThreeDotsMenu/ThreeDotsMenu';
+import getYearFromDate from '../../utils/utils';
 import './MovieCard.scss';
 
 export default function MovieCard(props) {
   const {
-    title,
-    description,
-    year,
-    poster,
+    movie,
+    onEdit,
+    onDelete,
   } = props;
 
-  const handleIconClick = () => {
-  };
+  const [isHovered, setHover] = useState(false);
+
+  const tdmItems = [{
+    itemText: 'Edit',
+    onClick: onEdit.bind(null, movie.id),
+  }, {
+    itemText: 'Delete',
+    onClick: onDelete.bind(null, movie.id),
+  }];
 
   return (
-    <div className='movie-card'>
-      <img src={poster} alt='movie poster' />
-      <FontAwesomeIcon
-        icon={faEllipsisV}
-        className='icon'
-        onClick={handleIconClick}
+    <div
+      className='movie-card'
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      <img src={movie.poster} alt='movie poster' />
+      <ThreeDotsMenu
+        isHovered={isHovered}
+        tdmItems={tdmItems}
       />
       <div className='movie-summary'>
         <div>
-          <p className='title'>{title}</p>
-          <p className='description'>{description}</p>
+          <p className='title'>{movie.title}</p>
+          <p className='description'>{movie.genres.join(', ')}</p>
         </div>
-        <div className='year'>{year}</div>
+        <div className='year'>{getYearFromDate(movie.releaseDate)}</div>
       </div>
     </div>
   );
 }
 
 MovieCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired,
-  poster: PropTypes.string.isRequired,
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string,
+    releaseDate: PropTypes.string,
+    url: PropTypes.string,
+    rating: PropTypes.number,
+    genres: PropTypes.arrayOf(PropTypes.string),
+    runtime: PropTypes.number,
+    description: PropTypes.string,
+    poster: PropTypes.string.isRequired,
+  }),
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
+
+MovieCard.defaultProps = {
+  movie: {
+    title: '',
+    releaseDate: '',
+    url: '',
+    rating: 0,
+    genres: [],
+    runtime: 0,
+    description: '',
+  },
 };

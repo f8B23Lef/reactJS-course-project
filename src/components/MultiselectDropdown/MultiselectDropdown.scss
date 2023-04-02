@@ -1,0 +1,69 @@
+@import '../../styles/index.scss';
+
+.multiselect-dropdown {
+  position: relative;
+
+  &__input {
+    width: 100%;
+    cursor: pointer;
+
+    &-wrapper {
+      display: flex;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+  }
+
+  &__body-wrapper {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background-color: $dark-grey;
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-y: auto;
+    max-height: 100px;
+    width: 100%;
+    color: $white;
+  }
+
+  &__option {
+    display: flex;
+
+    &:hover {
+      background-color: $grey;
+    }
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    user-select: none;
+  }
+
+  &__checkbox {
+    margin-right: 5px;
+  }
+}

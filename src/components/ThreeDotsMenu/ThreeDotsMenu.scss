@@ -1,0 +1,62 @@
+@import '../../styles/index.scss';
+
+.tdm__icon {
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid $dark-grey;
+  border-radius: 50%;
+  background-color: $dark-grey;
+  cursor: pointer;
+
+  &.hidden {
+    display: none;
+  }
+
+  &:hover {
+    background-color: $light-grey;
+    border-color: $light-grey;
+  }
+}
+
+.three-dots-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 100px;
+  background-color: $dark-grey;
+  border-radius: 2px;
+  z-index: 2;
+
+  &.hidden {
+    display: none;
+  }
+
+  button {
+    padding: 5px;
+    border: none;
+    text-align: start;
+    color: $white;
+    background-color: $dark-grey;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $grey;
+    }
+  }
+
+  .tdm-close__icon {
+    align-self: flex-end;
+    padding: 5px;
+    cursor: pointer;
+
+    &:hover {
+      color: $red;
+    }
+  }
+}
