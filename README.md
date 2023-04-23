@@ -2,8 +2,6 @@
 
 ## TASK 2
 
-### Description
-
 Create _package.json_ file and install [react](https://www.npmjs.com/package/react).
 
 Install and configure [webpack](https://www.npmjs.com/package/webpack) & [babel](https://babeljs.io/) to get build artifact by running npm command.
@@ -33,8 +31,6 @@ Discuss this with your mentor.
 
 ## TASK 3
 
-### Description
-
 Write components implementing HTML markup for required design [for home page](https://www.figma.com/file/fKGjrOqR6nJe6LYJopGCZ8/CDP-Home-Task-%E2%80%93-React-v1?node-id=0%3A2) of InVision prototype (Only UI part).
 For this part, no need to implement API calls and routing, the task can be done with mocked data.
 
@@ -44,8 +40,29 @@ You could create one component and wrap all your application or use several comp
 
 ## TASK 4
 
-### Description
-
 Implement markup and styles for [“Add movie”](https://www.figma.com/file/fKGjrOqR6nJe6LYJopGCZ8/CDP-Home-Task-%E2%80%93-React-v1?node-id=0%3A505), [“Edit”](https://www.figma.com/file/fKGjrOqR6nJe6LYJopGCZ8/CDP-Home-Task-%E2%80%93-React-v1?node-id=0%3A1005), [“Delete”](https://www.figma.com/file/fKGjrOqR6nJe6LYJopGCZ8/CDP-Home-Task-%E2%80%93-React-v1?node-id=0%3A1817) modal windows and “sorting”.
 
 No need to implement real API calls. Only add pages with mocked data.
+
+## TASK 5
+
+### Prepare
+
+Install and configure [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks). It will help you identify mistakes when using hooks.
+
+### Implement a possibility to [view movie details](https://www.figma.com/file/fKGjrOqR6nJe6LYJopGCZ8/CDP-Home-Task-%E2%80%93-React-v1?node-id=0%3A393)
+
+Given: the user is on the main page
+And: there are movies in the list
+When: the user clicks on a movie card in the list
+Then: the search panel at the top is replaced with clicked movie details
+
+### Implement a possibility to return back to search
+
+Given: the user is viewing movie details
+When: they click on the search icon at the top right corner
+Then: the movie details panel is replaced with the search panel
+
+In your project, change class components into functional components and use hooks for state and effect management. Don't use any external libraries/frameworks for state management. The goal is to dive deep into React's built-in state management tools and techniques.
+
+All functionality of the app except forms should work now with mock data, without server-side integrations.
