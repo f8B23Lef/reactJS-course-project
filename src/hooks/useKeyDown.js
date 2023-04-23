@@ -11,7 +11,7 @@ const useKeyDown = (key, handler) => {
     document.body.addEventListener('keydown', listener);
 
     return () => document.body.removeEventListener('keydown', listener);
-  }, []);
+  }, [key, handler]);
 };
 
 export default useKeyDown;

@@ -11,7 +11,7 @@ const useOutsideClick = (ref, handler) => {
     document.body.addEventListener('click', listener);
 
     return () => document.body.removeEventListener('click', listener);
-  }, []);
+  }, [ref, handler]);
 };
 
 export default useOutsideClick;

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ThreeDotsMenu from '../ThreeDotsMenu/ThreeDotsMenu';
-import getYearFromDate from '../../utils/utils';
+import { getYearFromDate } from '../../utils/utils';
+import { useHover } from '../../hooks/index';
 import './MovieCard.scss';
 
 export default function MovieCard(props) {
@@ -9,9 +10,10 @@ export default function MovieCard(props) {
     movie,
     onEdit,
     onDelete,
+    onClick,
   } = props;
 
-  const [isHovered, setHover] = useState(false);
+  const [hoverRef, isHovered] = useHover();
 
   const tdmItems = [{
     itemText: 'Edit',
@@ -24,8 +26,8 @@ export default function MovieCard(props) {
   return (
     <div
       className='movie-card'
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      ref={hoverRef}
+      onClick={() => onClick(movie)}
     >
       <img src={movie.poster} alt='movie poster' />
       <ThreeDotsMenu
@@ -57,6 +59,7 @@ MovieCard.propTypes = {
   }),
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 MovieCard.defaultProps = {

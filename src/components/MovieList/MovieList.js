@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import MovieCard from '../MovieCard/MovieCard';
 import { Modal, EditMovieModal, DeleteMovieModal } from '../../modals/index';
 import { movie as initMovie } from '../../utils/constants';
 import './MovieList.scss';
 
-export default function MovieList() {
+export default function MovieList(props) {
+  const { onMovieClick } = props;
+
   const movies = [];
 
   for (let i = 0; i < 5; i++) {
@@ -40,6 +43,7 @@ export default function MovieList() {
             movie={movie}
             onDelete={onDelete}
             onEdit={onEdit}
+            onClick={onMovieClick}
           />
         ))}
       </div>
@@ -59,3 +63,7 @@ export default function MovieList() {
     </>
   );
 }
+
+MovieList.propTypes = {
+  onMovieClick: PropTypes.func.isRequired,
+};
