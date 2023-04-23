@@ -16,7 +16,7 @@ export default function ThreeDotsMenu(props) {
   useKeyDown('Escape', () => setShowTDM(false));
 
   return (
-    <>
+    <div onClick={(event) => event.stopPropagation()}>
       <FontAwesomeIcon
         icon={faEllipsisV}
         className={`tdm__icon ${isHovered ? '' : 'hidden'}`}
@@ -38,7 +38,7 @@ export default function ThreeDotsMenu(props) {
           </button>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

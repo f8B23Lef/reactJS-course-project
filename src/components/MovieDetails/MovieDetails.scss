@@ -1,0 +1,61 @@
+@import '../../styles/colors';
+
+.movie-details {
+  padding: 20px 35px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    .search__icon {
+      font-size: 18px;
+      color: $red;
+      cursor: pointer;
+    }
+  }
+
+  &__content {
+    display: flex;
+    margin-top: 20px;
+
+    .info > div {
+      padding-bottom: 10px;
+    }
+
+    img {
+      width: 200px;
+      height: 300px;
+      margin-right: 40px;
+    }
+
+    .title {
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    .rating {
+      margin-left: 10px;
+      padding: 5px;
+      border: 1px solid $white;
+      border-radius: 50%;
+    }
+
+    .genre {
+      opacity: 0.6;
+    }
+
+    .duration {
+      color: $red;
+      font-size: 18px;
+    }
+    
+    .runtime {
+      margin-left: 10px;
+    }
+
+    .description {
+      font-size: 16px;
+      opacity: 0.6;
+    }
+  }
+}
