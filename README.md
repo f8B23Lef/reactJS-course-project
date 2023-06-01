@@ -66,3 +66,14 @@ Then: the movie details panel is replaced with the search panel
 In your project, change class components into functional components and use hooks for state and effect management. Don't use any external libraries/frameworks for state management. The goal is to dive deep into React's built-in state management tools and techniques.
 
 All functionality of the app except forms should work now with mock data, without server-side integrations.
+
+## TASK 6
+
+### Integrate with the backend
+
+1. Clone the [backend repository](https://github.com/VarvaraZadnepriak/MoviesAPI.ReactJS).
+2. Navigate to the cloned repository folder and run `npm install` to install dependencies.
+3. Run `npm start` command to start the backend server. It will start on https://localhost:4000.
+4. Open Swagger API docs: http://localhost:4000/api-docs.
+5. Make your components perform real AJAX requests. Implement data fetches as async actions and pass data to your components with redux.
+6. Implement filtering and sorting (by genre, rating, and release date) as redux actions. Don't filter or sort on the frontend side, use backend API for this.
