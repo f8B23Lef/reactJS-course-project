@@ -29,7 +29,7 @@ export default function MovieCard(props) {
       ref={hoverRef}
       onClick={() => onClick(movie)}
     >
-      <img src={movie.poster} alt='movie poster' />
+      <img src={movie.poster_path} alt='movie poster' />
       <ThreeDotsMenu
         isHovered={isHovered}
         tdmItems={tdmItems}
@@ -39,7 +39,7 @@ export default function MovieCard(props) {
           <p className='title'>{movie.title}</p>
           <p className='description'>{movie.genres.join(', ')}</p>
         </div>
-        <div className='year'>{getYearFromDate(movie.releaseDate)}</div>
+        <div className='year'>{getYearFromDate(movie.release_date)}</div>
       </div>
     </div>
   );
@@ -49,13 +49,13 @@ MovieCard.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string,
-    releaseDate: PropTypes.string,
+    release_date: PropTypes.string,
     url: PropTypes.string,
-    rating: PropTypes.number,
+    vote_average: PropTypes.number,
     genres: PropTypes.arrayOf(PropTypes.string),
     runtime: PropTypes.number,
-    description: PropTypes.string,
-    poster: PropTypes.string.isRequired,
+    overview: PropTypes.string,
+    poster_path: PropTypes.string.isRequired,
   }),
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
@@ -65,11 +65,11 @@ MovieCard.propTypes = {
 MovieCard.defaultProps = {
   movie: {
     title: '',
-    releaseDate: '',
+    release_date: '',
     url: '',
-    rating: 0,
+    vote_average: 0,
     genres: [],
     runtime: 0,
-    description: '',
+    overview: '',
   },
 };

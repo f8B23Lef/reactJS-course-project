@@ -24,18 +24,18 @@ export default function MovieDetails(props) {
         </span>
       </div>
       <div className='movie-details__content'>
-        <img src={movie.poster} alt='movie poster' />
+        <img src={movie.poster_path} alt='movie poster' />
         <div className='info'>
           <div className='title'>
             {movie.title}
-            <span className='rating'>{movie.rating}</span>
+            <span className='rating'>{movie.vote_average}</span>
           </div>
           <div className='genre'>{movie.genres.join(', ')}</div>
           <div className='duration'>
-            <span>{getYearFromDate(movie.releaseDate)}</span>
+            <span>{getYearFromDate(movie.release_date)}</span>
             <span className='runtime'>{getHoursAndMinutes(movie.runtime)}</span>
           </div>
-          <div className='description'>{movie.description}</div>
+          <div className='description'>{movie.overview}</div>
         </div>
       </div>
     </div>
@@ -46,13 +46,13 @@ MovieDetails.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string,
-    releaseDate: PropTypes.string,
+    release_date: PropTypes.string,
     url: PropTypes.string,
-    rating: PropTypes.number,
+    vote_average: PropTypes.number,
     genres: PropTypes.arrayOf(PropTypes.string),
     runtime: PropTypes.number,
-    description: PropTypes.string,
-    poster: PropTypes.string.isRequired,
+    overview: PropTypes.string,
+    poster_path: PropTypes.string.isRequired,
   }),
   setShowMovieDetails: PropTypes.func.isRequired,
 };
@@ -60,11 +60,11 @@ MovieDetails.propTypes = {
 MovieDetails.defaultProps = {
   movie: {
     title: '',
-    releaseDate: '',
+    release_date: '',
     url: '',
-    rating: 0,
+    vote_average: 0,
     genres: [],
     runtime: 0,
-    description: '',
+    overview: '',
   },
 };

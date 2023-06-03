@@ -45,12 +45,12 @@ export default function MovieForm(props) {
             />
           </div>
           <div className='flex-item'>
-            <label htmlFor='releaseDate'>Release Date</label>
+            <label htmlFor='release_date'>Release Date</label>
             <input
               type='date'
               placeholder='Select Date'
-              id='releaseDate'
-              value={movie.releaseDate}
+              id='release_date'
+              value={movie.release_date}
               onChange={onChange}
             />
           </div>
@@ -67,15 +67,15 @@ export default function MovieForm(props) {
             />
           </div>
           <div className='flex-item'>
-            <label htmlFor='rating'>Rating</label>
+            <label htmlFor='vote_average'>Rating</label>
             <input
               type='number'
               step='0.1'
               min='0'
               max='10'
-              id='rating'
+              id='vote_average'
               placeholder='7,8'
-              value={movie.rating}
+              value={movie.vote_average}
               onChange={onChange}
             />
           </div>
@@ -99,12 +99,12 @@ export default function MovieForm(props) {
         </div>
         <div className='flex-row'>
           <div className='flex-item flex-item-2'>
-            <label htmlFor='description'>Overview</label>
+            <label htmlFor='overview'>Overview</label>
             <textarea
               rows='5'
-              id='description'
+              id='overview'
               placeholder='Movie Description'
-              value={movie.description}
+              value={movie.overview}
               onChange={onChange}
             />
           </div>
@@ -126,12 +126,12 @@ MovieForm.propTypes = {
   title: PropTypes.string.isRequired,
   movie: PropTypes.shape({
     title: PropTypes.string,
-    releaseDate: PropTypes.string,
+    release_date: PropTypes.string,
     url: PropTypes.string,
-    rating: PropTypes.number,
+    vote_average: PropTypes.number,
     genres: PropTypes.arrayOf(PropTypes.string),
     runtime: PropTypes.number,
-    description: PropTypes.string,
+    overview: PropTypes.string,
   }),
   onClose: PropTypes.func.isRequired,
 };
@@ -139,11 +139,11 @@ MovieForm.propTypes = {
 MovieForm.defaultProps = {
   movie: {
     title: '',
-    releaseDate: '',
+    release_date: '',
     url: '',
-    rating: 0,
+    vote_average: 0,
     genres: [],
     runtime: 0,
-    description: '',
+    overview: '',
   },
 };

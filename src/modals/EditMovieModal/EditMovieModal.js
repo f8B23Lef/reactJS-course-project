@@ -16,12 +16,12 @@ export default function EditMovieModal(props) {
 EditMovieModal.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string,
-    releaseDate: PropTypes.string,
+    release_date: PropTypes.string,
     url: PropTypes.string,
-    rating: PropTypes.number,
+    vote_average: PropTypes.number,
     genres: PropTypes.arrayOf(PropTypes.string),
     runtime: PropTypes.number,
-    description: PropTypes.string,
+    overview: PropTypes.string,
   }).isRequired,
   onClose: PropTypes.func.isRequired,
 };
