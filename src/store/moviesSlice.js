@@ -28,7 +28,7 @@ export const moviesSlice = createSlice({
       })
       .addCase(fetchMovies.fulfilled, (state, action) => {
         state.movies = action.payload;
-        state.status = 'idle';
+        state.status = 'succeeded';
       })
       .addCase(fetchMovies.rejected, (state, action) => {
         state.error = action.error;
