@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { fetchMovies } from '../../store/moviesSlice';
 import './GenreToggle.scss';
 
 export default function GenreToggle(props) {
@@ -8,9 +10,13 @@ export default function GenreToggle(props) {
     genreNames,
   } = props;
   const [selectedGenre, setGenre] = useState(initialGenre);
+  const dispatch = useDispatch();
 
   const selectGenre = (genre) => {
     setGenre(genre);
+
+    const filter = genre === 'All' ? '' : genre;
+    dispatch(fetchMovies({ filter }));
   };
 
   const genres = genreNames.map((genre) => (
