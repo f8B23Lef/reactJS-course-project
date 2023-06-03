@@ -20,6 +20,15 @@ export const moviesSlice = createSlice({
     setMovies: (state, action) => {
       state.movies = action.payload;
     },
+    sortByRating: (state) => {
+      state.movies = state.movies
+        .sort((a, b) => b.vote_average - a.vote_average);
+    },
+    sortByReleaseDate: (state) => {
+      state.movies = state.movies
+        .sort((a, b) => new Date(b.release_date).getTime()
+          - new Date(a.release_date).getTime());
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -40,6 +49,8 @@ export const moviesSlice = createSlice({
 export default moviesSlice.reducer;
 export const {
   setMovies,
+  sortByRating,
+  sortByReleaseDate,
 } = moviesSlice.actions;
 
 export const selectMovies = (state) => state.movies.movies;
