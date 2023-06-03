@@ -1,8 +1,11 @@
 import axios from 'axios';
 
-const getMoviesService = async (sortBy = 'release_date') => {
+const getMoviesService = async ({
+  sortBy = 'release_date',
+  filter = '',
+}) => {
   const movies = await axios.get(
-    `/movies?limit=5&sortBy=${sortBy}&sortOrder=desc`,
+    `/movies?limit=5&sortBy=${sortBy}&sortOrder=desc&filter=${filter}`,
   );
 
   return movies.data.data;

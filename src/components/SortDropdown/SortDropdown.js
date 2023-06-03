@@ -13,7 +13,7 @@ export default function SortDropdown({ options }) {
     const sortBy = event.target.value;
     setSelectedOption(sortBy);
 
-    dispatch(fetchMovies(sortBy));
+    dispatch(fetchMovies({ sortBy }));
   };
 
   return (

@@ -3,8 +3,8 @@ import getMoviesService from '../services/index';
 
 export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',
-  async (sortBy) => {
-    const movies = await getMoviesService(sortBy);
+  async (data = {}) => {
+    const movies = await getMoviesService(data);
 
     return movies;
   },
@@ -46,7 +46,7 @@ export const {
 } = moviesSlice.actions;
 
 export const selectMovies = (state) => state.movies.movies;
-export const selectMoviesCount = (state) => state.movies.movies.length;
+export const selectMoviesCount = (state) => state.movies.movies?.length;
 export const selectMovieById = (state, movieId) => (
   state.movies.movies.find((movie) => movie.id === movieId)
 );
