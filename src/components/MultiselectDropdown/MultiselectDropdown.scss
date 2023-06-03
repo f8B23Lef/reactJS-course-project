@@ -42,10 +42,24 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    overflow-y: auto;
+    overflow-y: scroll;
     max-height: 100px;
     width: 100%;
     color: $white;
+
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 5px;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      background-color: $white;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background-color: $grey;
+    }
   }
 
   &__option {
