@@ -5,7 +5,7 @@ import GenreToggle from '../../components/GenreToggle/GenreToggle';
 import SortDropdown from '../../components/SortDropdown/SortDropdown';
 import MovieCount from '../../components/MovieCount/MovieCount';
 import MovieList from '../../components/MovieList/MovieList';
-import { GENRES, SORT_BY } from '../../utils/constants';
+import { FILTER_GENRES, SORT_BY } from '../../utils/constants';
 import { selectMoviesCount } from '../../store/moviesSlice';
 import './MainContent.scss';
 
@@ -18,7 +18,7 @@ export default function MainContent(props) {
     <div className='main-content'>
       <div className='top-content'>
         <GenreToggle
-          genreNames={['All', ...GENRES]}
+          genreNames={['All', ...FILTER_GENRES]}
           initialGenre='All'
         />
         <SortDropdown
