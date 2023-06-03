@@ -23,21 +23,29 @@
     }
 
     img {
-      width: 200px;
+      min-width: 200px;
+      max-width: 200px;
       height: 300px;
       margin-right: 40px;
     }
 
     .title {
+      display: flex;
       font-size: 18px;
       text-transform: uppercase;
     }
 
     .rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      top: -8px;
       margin-left: 10px;
-      padding: 5px;
-      border: 1px solid $white;
+      width: 35px;
+      height: 35px;
       border-radius: 50%;
+      border: 1px solid $white;
     }
 
     .genre {
