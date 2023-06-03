@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import MovieCard from '../MovieCard/MovieCard';
 import { Modal, EditMovieModal, DeleteMovieModal } from '../../modals/index';
-import { movie as initMovie } from '../../utils/constants';
+import { selectMovies } from '../../store/moviesSlice';
 import './MovieList.scss';
 
 export default function MovieList(props) {
   const { onMovieClick } = props;
 
-  const movies = [];
-
-  for (let i = 0; i < 5; i++) {
-    movies.push({ ...initMovie, id: i });
-  }
+  const movies = useSelector(selectMovies);
 
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);

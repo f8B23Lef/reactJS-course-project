@@ -6,6 +6,7 @@
   &__input {
     width: 100%;
     cursor: pointer;
+    text-overflow: ellipsis;
 
     &-wrapper {
       display: flex;

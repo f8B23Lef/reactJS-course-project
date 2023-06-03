@@ -35,12 +35,12 @@ Header.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
-    releaseDate: PropTypes.string,
+    release_date: PropTypes.string,
     url: PropTypes.string,
-    rating: PropTypes.number,
+    vote_average: PropTypes.number,
     genres: PropTypes.arrayOf(PropTypes.string),
     runtime: PropTypes.number,
-    description: PropTypes.string,
-    poster: PropTypes.string,
+    overview: PropTypes.string,
+    poster_path: PropTypes.string,
   }).isRequired,
 };
