@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { sortByRating, sortByReleaseDate } from '../../store/moviesSlice';
+import { fetchMovies } from '../../store/moviesSlice';
 import './SortDropdown.scss';
 
 export default function SortDropdown({ options }) {
@@ -10,14 +10,10 @@ export default function SortDropdown({ options }) {
   const [selectedOption, setSelectedOption] = useState(options[0].name);
 
   const handleChange = (event) => {
-    const sortValue = event.target.value;
-    setSelectedOption(sortValue);
+    const sortBy = event.target.value;
+    setSelectedOption(sortBy);
 
-    if (sortValue === 'vote_average') {
-      dispatch(sortByRating());
-    } else if (sortValue === 'release_date') {
-      dispatch(sortByReleaseDate());
-    }
+    dispatch(fetchMovies(sortBy));
   };
 
   return (

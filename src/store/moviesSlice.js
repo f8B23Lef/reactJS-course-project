@@ -1,11 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import getMoviesService from '../services/index';
 
-export const fetchMovies = createAsyncThunk('movies/fetchMovies', async () => {
-  const movies = await getMoviesService();
+export const fetchMovies = createAsyncThunk(
+  'movies/fetchMovies',
+  async (sortBy) => {
+    const movies = await getMoviesService(sortBy);
 
-  return movies;
-});
+    return movies;
+  },
+);
 
 const initialState = {
   movies: [],
@@ -19,15 +22,6 @@ export const moviesSlice = createSlice({
   reducers: {
     setMovies: (state, action) => {
       state.movies = action.payload;
-    },
-    sortByRating: (state) => {
-      state.movies = state.movies
-        .sort((a, b) => b.vote_average - a.vote_average);
-    },
-    sortByReleaseDate: (state) => {
-      state.movies = state.movies
-        .sort((a, b) => new Date(b.release_date).getTime()
-          - new Date(a.release_date).getTime());
     },
   },
   extraReducers: (builder) => {
@@ -49,8 +43,6 @@ export const moviesSlice = createSlice({
 export default moviesSlice.reducer;
 export const {
   setMovies,
-  sortByRating,
-  sortByReleaseDate,
 } = moviesSlice.actions;
 
 export const selectMovies = (state) => state.movies.movies;
