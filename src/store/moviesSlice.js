@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import getMoviesService from '../services/index';
+import getMoviesService from '../api/index';
 
 export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',
-  async (data = {}) => {
-    const movies = await getMoviesService(data);
+  async (_, thunkAPI) => {
+    const movies = await getMoviesService(thunkAPI.getState().filters);
 
     return movies;
   },

@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchMovies } from '../../store/moviesSlice';
+import { sortByChanged } from '../../store/filterSlice';
 import './SortDropdown.scss';
 
 export default function SortDropdown({ options }) {
   const dispatch = useDispatch();
 
-  const [selectedOption, setSelectedOption] = useState(options[0].name);
+  const selectedOption = useSelector((state) => state.filters.sortBy);
 
   const handleChange = (event) => {
-    const sortBy = event.target.value;
-    setSelectedOption(sortBy);
-
-    dispatch(fetchMovies({ sortBy }));
+    dispatch(sortByChanged(event.target.value));
+    dispatch(fetchMovies());
   };
 
   return (

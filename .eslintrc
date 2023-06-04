@@ -27,7 +27,8 @@
       // k, v - Key, Value
       // a, b - common parameter names in sorting comparison helper functions
       // e - exception
-      "exceptions": ["i", "j", "k", "v", "a", "b", "e"]
+      // _ - unused param
+      "exceptions": ["i", "j", "k", "v", "a", "b", "e", "_"]
     }],
     "import/no-extraneous-dependencies": [2, {"devDependencies": true}],
     "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],

@@ -18,8 +18,7 @@ export default function MainContent(props) {
     <div className='main-content'>
       <div className='top-content'>
         <GenreToggle
-          genreNames={['All', ...FILTER_GENRES]}
-          initialGenre='All'
+          genres={FILTER_GENRES}
         />
         <SortDropdown
           options={SORT_BY}

@@ -92,7 +92,7 @@ export default function MovieForm(props) {
               min='0'
               id='runtime'
               placeholder='minutes'
-              value={movie.runtime}
+              value={movie.runtime || 0}
               onChange={onChange}
             />
           </div>
