@@ -1,6 +1,25 @@
 export const GENRES = ['Action', 'Adventure', 'Comedy', 'Crime', 'Drama',
   'Family', 'Fantasy', 'Mystery', 'Romance', 'Science Fiction', 'Thriller'];
-export const FILTER_GENRES = ['Action', 'Comedy', 'Crime', 'Drama', 'Fantasy'];
+export const FILTER_GENRES = [{
+  name: 'All',
+  value: '',
+}, {
+  name: 'Action',
+  value: 'action',
+}, {
+  name: 'Comedy',
+  value: 'comedy',
+}, {
+  name: 'Crime',
+  value: 'crime',
+}, {
+  name: 'Drama',
+  value: 'drama',
+}, {
+  name: 'Fantasy',
+  value: 'fantasy',
+}];
+
 export const SORT_BY = [{
   name: 'Release date',
   value: 'release_date',

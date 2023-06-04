@@ -1,43 +1,38 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchMovies } from '../../store/moviesSlice';
+import { genreChanged } from '../../store/filterSlice';
 import './GenreToggle.scss';
 
-export default function GenreToggle(props) {
-  const {
-    initialGenre,
-    genreNames,
-  } = props;
-  const [selectedGenre, setGenre] = useState(initialGenre);
+export default function GenreToggle({ genres }) {
   const dispatch = useDispatch();
+  const selectedGenre = useSelector((state) => state.filters.genre);
 
   const selectGenre = (genre) => {
-    setGenre(genre);
-
-    const filter = genre === 'All' ? '' : genre;
-    dispatch(fetchMovies({ filter }));
+    dispatch(genreChanged(genre));
+    dispatch(fetchMovies());
   };
-
-  const genres = genreNames.map((genre) => (
-    <button
-      type="button"
-      key={genre}
-      className={selectedGenre === genre ? 'active' : ''}
-      onClick={() => selectGenre(genre)}
-    >
-      {genre}
-    </button>
-  ));
 
   return (
     <div className='genre-toggle'>
-      {genres}
+      {genres.map(({ name, value }) => (
+        <button
+          type="button"
+          key={value}
+          className={selectedGenre === value ? 'active' : ''}
+          onClick={() => selectGenre(value)}
+        >
+          {name}
+        </button>
+      ))}
     </div>
   );
 }
 
 GenreToggle.propTypes = {
-  initialGenre: PropTypes.string.isRequired,
-  genreNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    value: PropTypes.string,
+  })).isRequired,
 };
