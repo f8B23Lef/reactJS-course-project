@@ -77,3 +77,13 @@ All functionality of the app except forms should work now with mock data, withou
 4. Open Swagger API docs: http://localhost:4000/api-docs.
 5. Make your components perform real AJAX requests. Implement data fetches as async actions and pass data to your components with redux.
 6. Implement filtering and sorting (by genre, rating, and release date) as redux actions. Don't filter or sort on the frontend side, use backend API for this.
+
+## TASK 7
+
+Install [formik](https://formik.org/), implement a possibility to [“Add movie”](https://www.figma.com/file/fKGjrOqR6nJe6LYJopGCZ8/CDP-Home-Task-%E2%80%93-React-v1?node-id=0%3A505), [“Edit”](https://www.figma.com/file/fKGjrOqR6nJe6LYJopGCZ8/CDP-Home-Task-%E2%80%93-React-v1?node-id=0%3A1005), [“Delete”](https://www.figma.com/file/fKGjrOqR6nJe6LYJopGCZ8/CDP-Home-Task-%E2%80%93-React-v1?node-id=0%3A1817).
+
+Required validation criteria can be found in API docs: http://localhost:4000/api-docs.
+
+- Implement “Add movie” form with validation.
+- Implement “Edit movie” form with validation. Used hooks from formik.
+- Implement “Delete movie” functionality.
