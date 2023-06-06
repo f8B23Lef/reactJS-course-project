@@ -50,7 +50,6 @@ MovieCard.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string,
     release_date: PropTypes.string,
-    url: PropTypes.string,
     vote_average: PropTypes.number,
     genres: PropTypes.arrayOf(PropTypes.string),
     runtime: PropTypes.number,
@@ -66,7 +65,7 @@ MovieCard.defaultProps = {
   movie: {
     title: '',
     release_date: '',
-    url: '',
+    poster_path: '',
     vote_average: 0,
     genres: [],
     runtime: 0,
