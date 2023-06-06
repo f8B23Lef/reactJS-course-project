@@ -17,7 +17,7 @@ EditMovieModal.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string,
     release_date: PropTypes.string,
-    url: PropTypes.string,
+    poster_path: PropTypes.string,
     vote_average: PropTypes.number,
     genres: PropTypes.arrayOf(PropTypes.string),
     runtime: PropTypes.number,
