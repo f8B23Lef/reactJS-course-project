@@ -68,9 +68,7 @@ export default function MovieForm(props) {
               type='text'
               placeholder='Title'
               id='title'
-              value={formik.values.title}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              {...formik.getFieldProps('title')}
             />
             {formik.touched.title && formik.errors.title
               ? <div className='error__msg'>{formik.errors.title}</div>
@@ -82,9 +80,7 @@ export default function MovieForm(props) {
               type='date'
               placeholder='Select Date'
               id='release_date'
-              value={formik.values.release_date}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              {...formik.getFieldProps('release_date')}
             />
             {formik.touched.release_date && formik.errors.release_date
               ? <div className='error__msg'>{formik.errors.release_date}</div>
@@ -98,9 +94,7 @@ export default function MovieForm(props) {
               type='poster_path'
               placeholder='https://'
               id='poster_path'
-              value={formik.values.poster_path}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              {...formik.getFieldProps('poster_path')}
             />
             {formik.touched.poster_path && formik.errors.poster_path
               ? <div className='error__msg'>{formik.errors.poster_path}</div>
@@ -115,9 +109,7 @@ export default function MovieForm(props) {
               max='10'
               id='vote_average'
               placeholder='7,8'
-              value={formik.values.vote_average}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              {...formik.getFieldProps('vote_average')}
             />
             {formik.touched.vote_average && formik.errors.vote_average
               ? <div className='error__msg'>{formik.errors.vote_average}</div>
@@ -136,9 +128,7 @@ export default function MovieForm(props) {
               min='0'
               id='runtime'
               placeholder='minutes'
-              value={formik.values.runtime}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              {...formik.getFieldProps('runtime')}
             />
             {formik.touched.runtime && formik.errors.runtime
               ? <div className='error__msg'>{formik.errors.runtime}</div>
@@ -152,9 +142,7 @@ export default function MovieForm(props) {
               rows='5'
               id='overview'
               placeholder='Movie Description'
-              value={formik.values.overview}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              {...formik.getFieldProps('overview')}
             />
             {formik.touched.overview && formik.errors.overview
               ? <div className='error__msg'>{formik.errors.overview}</div>
