@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getMoviesService = async ({
+export const getMoviesRequest = async ({
   sortBy = 'release_date',
   genre = '',
 }) => {
@@ -11,4 +11,20 @@ const getMoviesService = async ({
   return movies.data.data;
 };
 
-export default getMoviesService;
+export const addMovieRequest = async (movie) => {
+  const response = await axios.post('/movies', movie);
+
+  return response.data;
+};
+
+export const editMovieRequest = async (movie) => {
+  const response = await axios.put('/movies', movie);
+
+  return response.data;
+};
+
+export const deleteMovieRequest = async (id) => {
+  const response = await axios.delete(`/movies/${id}`);
+
+  return response;
+};

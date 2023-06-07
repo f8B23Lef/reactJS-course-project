@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MovieForm from '../../components/MovieForm/MovieForm';
+import { addMovie } from '../../store/moviesSlice';
 
 export default function AddMovieModal(props) {
   const {
@@ -8,7 +9,11 @@ export default function AddMovieModal(props) {
   } = props;
 
   return (
-    <MovieForm title='Add Movie' onClose={onClose} />
+    <MovieForm
+      title='Add Movie'
+      onSubmit={addMovie}
+      onClose={onClose}
+    />
   );
 }
 

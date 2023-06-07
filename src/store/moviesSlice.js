@@ -1,12 +1,40 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import getMoviesService from '../api/index';
+import {
+  getMoviesRequest,
+  addMovieRequest,
+  editMovieRequest,
+  deleteMovieRequest,
+} from '../api/index';
 
 export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',
   async (_, thunkAPI) => {
-    const movies = await getMoviesService(thunkAPI.getState().filters);
-
+    const movies = await getMoviesRequest(thunkAPI.getState().filters);
     return movies;
+  },
+);
+
+export const addMovie = createAsyncThunk(
+  'movies/addMovie',
+  async (movie) => {
+    const response = await addMovieRequest(movie);
+    return response;
+  },
+);
+
+export const editMovie = createAsyncThunk(
+  'movies/editMovie',
+  async (movie) => {
+    const response = await editMovieRequest(movie);
+    return response;
+  },
+);
+
+export const deleteMovie = createAsyncThunk(
+  'movies/deleteMovie',
+  async (id) => {
+    await deleteMovieRequest(id);
+    return { id };
   },
 );
 
@@ -36,6 +64,22 @@ export const moviesSlice = createSlice({
       .addCase(fetchMovies.rejected, (state, action) => {
         state.error = action.error;
         state.status = 'failed';
+      })
+      // TODO: handle errors for add/edit/delete to show them on UI
+      .addCase(addMovie.fulfilled, (state, action) => {
+        state.movies.push(action.payload);
+        // TODO: refetch movies because of sort and filter
+      })
+      .addCase(editMovie.fulfilled, (state, action) => {
+        const index = state.movies
+          .findIndex((movie) => movie.id === action.payload.id);
+        state.movies[index] = action.payload;
+      })
+      .addCase(deleteMovie.fulfilled, (state, action) => {
+        const movies = state.movies
+          .filter((movie) => movie.id !== action.payload.id);
+        state.movies = movies;
+        // TODO: refetch to show 5 movies as by default
       });
   },
 });

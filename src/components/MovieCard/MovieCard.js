@@ -27,7 +27,7 @@ export default function MovieCard(props) {
     <div
       className='movie-card'
       ref={hoverRef}
-      onClick={() => onClick(movie)}
+      onClick={() => onClick(movie.id)}
     >
       <img src={movie.poster_path} alt='movie poster' />
       <ThreeDotsMenu

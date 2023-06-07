@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import ErrorBoundary from './hoc/ErrorBoundary/ErrorBoundary';
 import Header from './views/Header/Header';
 import MainContent from './views/MainContent/MainContent';
 import Footer from './views/Footer/Footer';
+import { selectMovieById } from './store/moviesSlice';
 
 export default function App() {
   const [showMovieDetails, setShowMovieDetails] = useState(false);
-  const [movie, setMovie] = useState({});
+  const [movieId, setMovieId] = useState();
 
-  const onMovieClick = (movie) => {
+  const movie = useSelector((state) => selectMovieById(state, movieId));
+
+  const onMovieClick = (movieId) => {
     setShowMovieDetails(true);
-    setMovie(movie);
+    setMovieId(movieId);
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
