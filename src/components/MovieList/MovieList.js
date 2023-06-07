@@ -70,7 +70,10 @@ export default function MovieList(props) {
       )}
       {showDeleteModal && (
         <Modal onClose={() => setShowDeleteModal(false)}>
-          <DeleteMovieModal onClose={() => setShowDeleteModal(false)} />
+          <DeleteMovieModal
+            movieId={movie.id}
+            onClose={() => setShowDeleteModal(false)}
+          />
         </Modal>
       )}
     </>

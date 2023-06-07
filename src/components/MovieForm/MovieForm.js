@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -11,9 +12,11 @@ import './MovieForm.scss';
 export default function MovieForm(props) {
   const {
     title,
+    onSubmit,
     onClose,
     movie,
   } = props;
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -21,7 +24,7 @@ export default function MovieForm(props) {
       release_date: movie.release_date,
       poster_path: movie.poster_path,
       vote_average: movie.vote_average,
-      // genres
+      genres: movie.genres,
       runtime: movie.runtime || 0,
       overview: movie.overview,
     },
@@ -37,6 +40,8 @@ export default function MovieForm(props) {
         .min(0, 'Minimum rating is 0')
         .max(10, 'Maximum rating is 10')
         .required('Please enter rating'),
+      genres: Yup.array()
+        .min(1, 'Select genre'),
       runtime: Yup.number()
         .min(0, 'Minimum runtime is 0')
         .integer('Runtime must be integer')
@@ -47,6 +52,8 @@ export default function MovieForm(props) {
     onSubmit: (values) => {
       // eslint-disable-next-line no-console
       console.log(values);
+      dispatch(onSubmit({ id: movie.id, ...values }));
+      onClose();
     },
   });
 
@@ -119,7 +126,11 @@ export default function MovieForm(props) {
         <div className='flex-row'>
           <div className='flex-item'>
             <label>Genre</label>
-            <MultiselectDropdown selectedOptions={movie.genres} />
+            {/* // TODO: avoid this hack with formik for custom ms dp */}
+            <MultiselectDropdown formik={formik} />
+            {formik.touched.genres && formik.errors.genres
+              ? <div className='error__msg'>{formik.errors.genres}</div>
+              : null}
           </div>
           <div className='flex-item'>
             <label htmlFor='runtime'>Runtime</label>
@@ -169,6 +180,7 @@ export default function MovieForm(props) {
 MovieForm.propTypes = {
   title: PropTypes.string.isRequired,
   movie: PropTypes.shape({
+    id: PropTypes.number,
     title: PropTypes.string,
     release_date: PropTypes.string,
     poster_path: PropTypes.string,
@@ -177,6 +189,7 @@ MovieForm.propTypes = {
     runtime: PropTypes.number,
     overview: PropTypes.string,
   }),
+  onSubmit: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 

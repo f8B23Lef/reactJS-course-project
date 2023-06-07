@@ -13,7 +13,7 @@ export default function Header(props) {
   } = props;
 
   return (
-    showMovieDetails
+    showMovieDetails && movie
       ? (
         <MovieDetails
           movie={movie}
@@ -41,5 +41,9 @@ Header.propTypes = {
     runtime: PropTypes.number,
     overview: PropTypes.string,
     poster_path: PropTypes.string,
-  }).isRequired,
+  }),
+};
+
+Header.defaultProps = {
+  movie: undefined,
 };

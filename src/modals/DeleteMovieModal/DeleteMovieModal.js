@@ -1,13 +1,22 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { deleteMovie } from '../../store/moviesSlice';
 import './DeleteMovieModal.scss';
 
 export default function DeleteMovieModal(props) {
   const {
+    movieId,
     onClose,
   } = props;
+  const dispatch = useDispatch();
+
+  const onConfirm = () => {
+    dispatch(deleteMovie(movieId));
+    onClose();
+  };
 
   return (
     <>
@@ -25,7 +34,11 @@ export default function DeleteMovieModal(props) {
         </div>
       </div>
       <div className='modal-footer'>
-        <button type='button' className='submit__button'>
+        <button
+          type='button'
+          className='submit__button'
+          onClick={onConfirm}
+        >
           Confirm
         </button>
       </div>
@@ -34,5 +47,6 @@ export default function DeleteMovieModal(props) {
 }
 
 DeleteMovieModal.propTypes = {
+  movieId: PropTypes.number.isRequired,
   onClose: PropTypes.func.isRequired,
 };
