@@ -52,16 +52,16 @@ Install and configure [eslint-plugin-react-hooks](https://www.npmjs.com/package/
 
 ### Implement a possibility to [view movie details](https://www.figma.com/file/fKGjrOqR6nJe6LYJopGCZ8/CDP-Home-Task-%E2%80%93-React-v1?node-id=0%3A393)
 
-Given: the user is on the main page
-And: there are movies in the list
-When: the user clicks on a movie card in the list
-Then: the search panel at the top is replaced with clicked movie details
+**Given:** the user is on the main page
+**And:** there are movies in the list
+**When:** the user clicks on a movie card in the list
+**Then:** the search panel at the top is replaced with clicked movie details
 
 ### Implement a possibility to return back to search
 
-Given: the user is viewing movie details
-When: they click on the search icon at the top right corner
-Then: the movie details panel is replaced with the search panel
+**Given:** the user is viewing movie details
+**When:** they click on the search icon at the top right corner
+**Then:** the movie details panel is replaced with the search panel
 
 In your project, change class components into functional components and use hooks for state and effect management. Don't use any external libraries/frameworks for state management. The goal is to dive deep into React's built-in state management tools and techniques.
 
@@ -87,3 +87,92 @@ Required validation criteria can be found in API docs: http://localhost:4000/api
 - Implement “Add movie” form with validation.
 - Implement “Edit movie” form with validation. Used hooks from formik.
 - Implement “Delete movie” functionality.
+
+## TASK 8
+
+Using [react-router](https://reactrouter.com/) define routes according to the following acceptance criteria.
+Move state related to search parameters and current movie into URL.
+Use routes to get state from URL and use [react-router](https://reactrouter.com/) API to update URL when changes should be made to the state.
+
+### AC1
+
+**Given:** any state\
+**When:** the address bar pathname is changed to "/"\
+**Then:** the user should be redirected to "/search".
+
+### AC2
+
+**Given:** any state\
+**When:** the address bar pathname is changed to "/search" without a :searchQuery URL segment\
+**Then:** the search page with the most popular movies should be displayed (send a request with empty "search" query param)\
+**And:** search input value should be empty
+
+### AC3
+
+**Given:** any state\
+**When:** the address bar pathname is changed to "/search/:searchQuery" where :searchQuery is not an empty string\
+**Then:** the search page with results should be displayed\
+**And:** and the search results should match :searchQuery from the URL segment\
+**And:** search input value should equal to :searchQuery
+
+### AC4
+
+**Given:** any state\
+**When:** the page address is changed\
+**And:** the pathname is "/search/:searchQuery" with or without :searchQuery\
+**And:** address bar contains "genre" query parameter\
+**Then:** the search page results should be filtered by the genre specified in the query
+parameter\
+**And:** the specified genre name should be highlighted in UI
+
+### AC5
+
+**Given:** any state\
+**When:** the page address is changed\
+**And:** the pathname is "/search/:searchQuery" with or without :searchQuery\
+**And:** address bar contains "sortBy" query parameter\
+**Then:** the search page results should be sorted by the property name specified in the query
+parameter (Release Date/Name)\
+**And:** the specified sorting option should be highlighted in UI
+
+### AC6
+
+**Given:** any state\
+**When:** the page address is changed\
+**And:** the pathname is "/search/:searchQuery" with or without :searchQuery\
+**And:** address bar contains "movie=:movieId" query parameter\
+**Then:** the search page is displayed with the search panel replaced with movie details for the movie from "movie" query parameter
+
+### AC7
+
+**Given:** any state\
+**When:** the address bar pathname is changed to an unknown value\
+**Then:** a 404 page should be displayed
+
+### AC8
+
+**Given:** a user is on the search page\
+**When:** they change sorting option via UI\
+**Then:** the address bar should be changed to include new sorting option in "sortBy" query parameter
+
+### AC9
+
+**Given:** a user is on the search page\
+**When:** they select a genre\
+**Then:** the address bar should be changed to include selected genre in "genre" query parameter
+
+### AC10
+
+**Given:** a user is on the search page\
+**When:** they type in a query into the search box and hit Enter or click "Search"\
+**Then:** the address bar pathname should be changed to "/search/:searchQuery" where :searchQuery equals to the search input value
+
+### AC11
+
+**Given:** a user is on the search page\
+**When:** they click on a movie from the list\
+**Then:** the address bar query parameter "movie" should be set with value equal to clicked movie ID
+
+### Hint
+
+Don't try to sync router state with Redux state. Use router state as a single source of truth for the state that can be stored in URL.
