@@ -1,17 +1,19 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { fetchMovies } from '../../store/moviesSlice';
-import { genreChanged } from '../../store/filterSlice';
+import { useURLSearchParams } from '../../hooks/index';
 import './GenreToggle.scss';
 
 export default function GenreToggle({ genres }) {
-  const dispatch = useDispatch();
-  const selectedGenre = useSelector((state) => state.filters.genre);
+  const genreQuery = useURLSearchParams().get('genre') || '';
+  const [selectedGenre, setSelectedGenre] = useState(genreQuery);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const selectGenre = (genre) => {
-    dispatch(genreChanged(genre));
-    dispatch(fetchMovies());
+    setSelectedGenre(genre);
+
+    searchParams.set('genre', genre);
+    setSearchParams(searchParams);
   };
 
   return (

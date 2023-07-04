@@ -8,8 +8,8 @@ import {
 
 export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',
-  async (_, thunkAPI) => {
-    const movies = await getMoviesRequest(thunkAPI.getState().filters);
+  async (filters = {}) => {
+    const movies = await getMoviesRequest(filters);
     return movies;
   },
 );
