@@ -1,25 +1,26 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { fetchMovies } from '../../store/moviesSlice';
-import { sortByChanged } from '../../store/filterSlice';
+import { useURLSearchParams } from '../../hooks/index';
 import './SortDropdown.scss';
 
 export default function SortDropdown({ options }) {
-  const dispatch = useDispatch();
-
-  const selectedOption = useSelector((state) => state.filters.sortBy);
+  const sortByQuery = useURLSearchParams().get('sortBy') || 'vote_average';
+  const [sortBy, setSortBy] = useState(sortByQuery);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleChange = (event) => {
-    dispatch(sortByChanged(event.target.value));
-    dispatch(fetchMovies());
+    setSortBy(event.target.value);
+
+    searchParams.set('sortBy', event.target.value);
+    setSearchParams(searchParams);
   };
 
   return (
     <div className='sort'>
       <p>SORT BY</p>
       <select
-        value={selectedOption}
+        value={sortBy}
         onChange={handleChange}
       >
         {options.map((option) => (

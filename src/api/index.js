@@ -1,11 +1,14 @@
 import axios from 'axios';
 
 export const getMoviesRequest = async ({
-  sortBy = 'release_date',
+  sortBy = '',
   genre = '',
+  search = '',
+  searchBy = 'title',
 }) => {
   const movies = await axios.get(
-    `/movies?limit=5&sortBy=${sortBy}&sortOrder=desc&filter=${genre}`,
+    `/movies?limit=5&sortBy=${sortBy}&sortOrder=desc&filter=${genre}`
+    + `&search=${search}&searchBy=${searchBy}`,
   );
 
   return movies.data.data;

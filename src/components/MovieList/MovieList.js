@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import MovieCard from '../MovieCard/MovieCard';
 import Spinner from '../Spinner/Spinner';
 import { Modal, EditMovieModal, DeleteMovieModal } from '../../modals/index';
 import { selectMovies, fetchMovies } from '../../store/moviesSlice';
+import { useURLSearchParams } from '../../hooks/index';
 import './MovieList.scss';
 
 export default function MovieList(props) {
@@ -22,11 +24,15 @@ export default function MovieList(props) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [movie, setMovie] = useState({});
 
+  const sortBy = useURLSearchParams().get('sortBy') || 'vote_average';
+  const genre = useURLSearchParams().get('genre') || '';
+  const { searchQuery: search } = useParams();
+
   useEffect(() => {
     if (shouldRefetchMovies) {
-      dispatch(fetchMovies());
+      dispatch(fetchMovies({ sortBy, genre, search }));
     }
-  }, [dispatch, shouldRefetchMovies]);
+  }, [dispatch, shouldRefetchMovies, sortBy, genre, search]);
 
   const onEdit = (movieId) => {
     const movie = movies.find((movie) => movie.id === movieId);

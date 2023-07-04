@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../Logo/Logo';
@@ -11,6 +12,12 @@ export default function MovieDetails(props) {
     movie,
     setShowMovieDetails,
   } = props;
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    setShowMovieDetails(false);
+    navigate('/');
+  };
 
   return (
     <div className='movie-details'>
@@ -18,7 +25,7 @@ export default function MovieDetails(props) {
         <Logo />
         <span
           className='search__icon'
-          onClick={() => setShowMovieDetails(false)}
+          onClick={handleClick}
         >
           <FontAwesomeIcon icon={faSearch} />
         </span>
