@@ -42,6 +42,7 @@ const initialState = {
   movies: [],
   status: 'idle',
   error: null,
+  shouldRefetchMovies: false,
 };
 
 export const moviesSlice = createSlice({
@@ -60,26 +61,29 @@ export const moviesSlice = createSlice({
       .addCase(fetchMovies.fulfilled, (state, action) => {
         state.movies = action.payload;
         state.status = 'succeeded';
+        state.shouldRefetchMovies = false;
       })
       .addCase(fetchMovies.rejected, (state, action) => {
         state.error = action.error;
         state.status = 'failed';
+        state.shouldRefetchMovies = false;
       })
       // TODO: handle errors for add/edit/delete to show them on UI
       .addCase(addMovie.fulfilled, (state, action) => {
         state.movies.push(action.payload);
-        // TODO: refetch movies because of sort and filter
+        state.shouldRefetchMovies = true;
       })
       .addCase(editMovie.fulfilled, (state, action) => {
         const index = state.movies
           .findIndex((movie) => movie.id === action.payload.id);
         state.movies[index] = action.payload;
+        state.shouldRefetchMovies = true;
       })
       .addCase(deleteMovie.fulfilled, (state, action) => {
         const movies = state.movies
           .filter((movie) => movie.id !== action.payload.id);
         state.movies = movies;
-        // TODO: refetch to show 5 movies as by default
+        state.shouldRefetchMovies = true;
       });
   },
 });
