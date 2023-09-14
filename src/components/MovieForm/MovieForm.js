@@ -3,9 +3,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import getFormikValidationSchema from '../../configs/schemas';
 import MultiselectDropdown from '../MultiselectDropdown/MultiselectDropdown';
 import './MovieForm.scss';
 
@@ -28,27 +28,7 @@ export default function MovieForm(props) {
       runtime: movie.runtime || 0,
       overview: movie.overview,
     },
-    validationSchema: Yup.object({
-      title: Yup.string()
-        .required('Please enter title'),
-      release_date: Yup.date()
-        .required('Please enter release date'),
-      poster_path: Yup.string()
-        .url('Invalid URL')
-        .required('Please enter poster url'),
-      vote_average: Yup.number()
-        .min(0, 'Minimum rating is 0')
-        .max(10, 'Maximum rating is 10')
-        .required('Please enter rating'),
-      genres: Yup.array()
-        .min(1, 'Select genre'),
-      runtime: Yup.number()
-        .min(0, 'Minimum runtime is 0')
-        .integer('Runtime must be integer')
-        .required('Please enter runtime'),
-      overview: Yup.string()
-        .required('Please enter overview'),
-    }),
+    validationSchema: getFormikValidationSchema(),
     onSubmit: (values) => {
       // eslint-disable-next-line no-console
       console.log(values);
