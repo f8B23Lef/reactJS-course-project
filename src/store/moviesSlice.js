@@ -68,10 +68,14 @@ export const moviesSlice = createSlice({
         state.status = 'failed';
         state.shouldRefetchMovies = false;
       })
-      // TODO: handle errors for add/edit/delete to show them on UI
       .addCase(addMovie.fulfilled, (state, action) => {
         state.movies.push(action.payload);
         state.shouldRefetchMovies = true;
+      })
+      .addCase(addMovie.rejected, (state, action) => {
+        state.error = action.error;
+        state.status = 'failed';
+        state.shouldRefetchMovies = false;
       })
       .addCase(editMovie.fulfilled, (state, action) => {
         const index = state.movies
@@ -79,11 +83,21 @@ export const moviesSlice = createSlice({
         state.movies[index] = action.payload;
         state.shouldRefetchMovies = true;
       })
+      .addCase(editMovie.rejected, (state, action) => {
+        state.error = action.error;
+        state.status = 'failed';
+        state.shouldRefetchMovies = false;
+      })
       .addCase(deleteMovie.fulfilled, (state, action) => {
         const movies = state.movies
           .filter((movie) => movie.id !== action.payload.id);
         state.movies = movies;
         state.shouldRefetchMovies = true;
+      })
+      .addCase(deleteMovie.rejected, (state, action) => {
+        state.error = action.error;
+        state.status = 'failed';
+        state.shouldRefetchMovies = false;
       });
   },
 });
