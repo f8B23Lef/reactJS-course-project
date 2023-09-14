@@ -10,10 +10,10 @@ export default function MultiselectDropdown(props) {
   const {
     placeholder,
     options,
-    formik,
+    checkedOptions,
+    onCheck,
   } = props;
   const [showDropdown, setShowDropdown] = useState(false);
-  const [checkedOptions, setCheckedOptions] = useState(formik.values.genres);
 
   const handleCheck = (event) => {
     const updatedList = [...checkedOptions];
@@ -24,10 +24,7 @@ export default function MultiselectDropdown(props) {
       updatedList.splice(checkedOptions.indexOf(event.target.value), 1);
     }
 
-    setCheckedOptions(updatedList);
-
-    formik.setTouched({ ...formik.touched, genres: true });
-    formik.setFieldValue('genres', updatedList);
+    onCheck?.(updatedList);
   };
 
   const getCheckedValues = () => checkedOptions.join(', ');
@@ -87,11 +84,13 @@ export default function MultiselectDropdown(props) {
 MultiselectDropdown.propTypes = {
   placeholder: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.string),
-  formik: PropTypes.shape(),
+  checkedOptions: PropTypes.arrayOf(PropTypes.string),
+  onCheck: PropTypes.func,
 };
 
 MultiselectDropdown.defaultProps = {
   placeholder: 'Select Genre',
   options: [...GENRES],
-  formik: {},
+  checkedOptions: [],
+  onCheck: null,
 };
