@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import MovieCard from '../MovieCard/MovieCard';
 import Spinner from '../Spinner/Spinner';
 import { Modal, EditMovieModal, DeleteMovieModal } from '../../modals/index';
-import { selectMovies } from '../../store/moviesSlice';
+import { selectMovies, fetchMovies } from '../../store/moviesSlice';
 import './MovieList.scss';
 
 export default function MovieList(props) {
   const { onMovieClick } = props;
 
+  const dispatch = useDispatch();
   const movies = useSelector(selectMovies);
   const moviesStatus = useSelector((state) => state.movies.status);
   const errorMessage = useSelector((state) => state.movies.error?.message);
+  const shouldRefetchMovies = useSelector(
+    (state) => state.movies.shouldRefetchMovies,
+  );
 
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [movie, setMovie] = useState({});
+
+  useEffect(() => {
+    if (shouldRefetchMovies) {
+      dispatch(fetchMovies());
+    }
+  }, [dispatch, shouldRefetchMovies]);
 
   const onEdit = (movieId) => {
     const movie = movies.find((movie) => movie.id === movieId);
