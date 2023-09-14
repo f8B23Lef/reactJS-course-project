@@ -44,11 +44,15 @@ export default function MovieList(props) {
     }
   };
 
-  let content;
+  if (moviesStatus === 'failed') {
+    // eslint-disable-next-line no-alert
+    alert(errorMessage);
+  }
 
+  let content;
   if (moviesStatus === 'loading') {
     content = <Spinner />;
-  } else if (moviesStatus === 'succeeded') {
+  } else if (moviesStatus === 'succeeded' || movies.length) {
     content = (
       <div className='movie-list'>
         {movies.map((movie) => (
@@ -62,9 +66,6 @@ export default function MovieList(props) {
         ))}
       </div>
     );
-  } else if (moviesStatus === 'failed') {
-    // eslint-disable-next-line no-alert
-    alert(errorMessage);
   }
 
   return (
