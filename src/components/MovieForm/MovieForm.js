@@ -37,6 +37,11 @@ export default function MovieForm(props) {
     },
   });
 
+  const onMultiselectDropdownCheck = (updatedGenreList) => {
+    formik.setTouched({ ...formik.touched, genres: true });
+    formik.setFieldValue('genres', updatedGenreList);
+  };
+
   return (
     <>
       <div className='modal-header'>
@@ -106,8 +111,10 @@ export default function MovieForm(props) {
         <div className='flex-row'>
           <div className='flex-item'>
             <label>Genre</label>
-            {/* // TODO: avoid this hack with formik for custom ms dp */}
-            <MultiselectDropdown formik={formik} />
+            <MultiselectDropdown
+              checkedOptions={formik.values.genres}
+              onCheck={onMultiselectDropdownCheck}
+            />
             {formik.touched.genres && formik.errors.genres
               ? <div className='error__msg'>{formik.errors.genres}</div>
               : null}
