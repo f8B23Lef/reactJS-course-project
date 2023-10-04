@@ -14,6 +14,13 @@ export const getMoviesRequest = async ({
   return movies.data.data;
 };
 
+export const getMovieByIdRequest = async (id) => {
+  const response = await axios.get(`/movies/${id}`)
+    .catch((error) => error.response);
+
+  return response;
+};
+
 export const addMovieRequest = async (movie) => {
   const response = await axios.post('/movies', movie);
 
