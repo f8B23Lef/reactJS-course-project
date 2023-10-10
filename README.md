@@ -176,3 +176,25 @@ parameter (Release Date/Name)\
 ### Hint
 
 Don't try to sync router state with Redux state. Use router state as a single source of truth for the state that can be stored in URL.
+
+## TASK 9
+
+### Unit and component testing
+
+Install and configure [jest](https://jestjs.io/docs/getting-started) and [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) for unit and component tests.
+Cover one of your reducers with unit tests, verify that given an action the returned state matches expected result.
+
+Write at least one test for your interactive react components.
+For example, in your test render the search panel and verify that it matches the snapshot.
+Then fire input events to simulate typing into the search input and then fire a click event on the "Search" button.
+Verify that proper callbacks passed to component in props are called or verify that expected effects are produced.
+
+### End-to-End Testing
+
+Install [Cypress](https://www.cypress.io/) or [WebdriverIO](https://webdriver.io/) for end-to-end tests.
+Cover at least one complete end user scenario with one of these testing frameworks.
+You can take the following searching scenario as an example:
+
+1. In your test navigate the browser to the root URL: "/". Verify that a search page with empty results is displayed.
+2. Type your search query into the search input and click the "Search" button. Verify that search results match the search query.
+3. Click on one of the search results and verify that correct movie page is displayed and the movie info is visible on the screen.
