@@ -48,11 +48,6 @@ const initialState = {
 export const moviesSlice = createSlice({
   name: 'movies',
   initialState,
-  reducers: {
-    setMovies: (state, action) => {
-      state.movies = action.payload;
-    },
-  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMovies.pending, (state) => {
@@ -103,9 +98,6 @@ export const moviesSlice = createSlice({
 });
 
 export default moviesSlice.reducer;
-export const {
-  setMovies,
-} = moviesSlice.actions;
 
 export const selectMovies = (state) => state.movies.movies;
 export const selectMoviesCount = (state) => state.movies.movies?.length;
