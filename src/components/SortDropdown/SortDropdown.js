@@ -22,6 +22,7 @@ export default function SortDropdown({ options }) {
       <select
         value={sortBy}
         onChange={handleChange}
+        data-testid='sort-select'
       >
         {options.map((option) => (
           <option
