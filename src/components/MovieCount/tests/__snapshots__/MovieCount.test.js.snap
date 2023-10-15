@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCount renders MovieCount snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="count"
+  >
+    <strong>
+      3
+    </strong>
+     movies found
+  </div>
+</DocumentFragment>
+`;
