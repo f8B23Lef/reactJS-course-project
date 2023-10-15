@@ -25,6 +25,7 @@ export default function MovieDetails(props) {
         <Logo />
         <span
           className='search__icon'
+          data-testid='search-icon'
           onClick={handleClick}
         >
           <FontAwesomeIcon icon={faSearch} />
