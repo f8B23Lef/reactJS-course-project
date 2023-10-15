@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo renders Logo snapshot 1`] = `
+<DocumentFragment>
+  <img
+    alt="netflix logo"
+    class="logo"
+    src="/logo"
+  />
+</DocumentFragment>
+`;
