@@ -26,6 +26,7 @@ export default function MovieCard(props) {
   return (
     <div
       className='movie-card'
+      data-testid='movie-card'
       ref={hoverRef}
       onClick={() => onClick(movie.id)}
     >

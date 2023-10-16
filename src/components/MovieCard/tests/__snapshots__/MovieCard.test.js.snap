@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard renders MovieCard snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="movie-card"
+    data-testid="movie-card"
+  >
+    <img
+      alt="movie poster"
+      src="/poster"
+    />
+    ThreeDotsMenuComponent
+    <div
+      class="movie-summary"
+    >
+      <div>
+        <p
+          class="title"
+        >
+          Movie1
+        </p>
+        <p
+          class="description"
+        >
+          Crime, Action
+        </p>
+      </div>
+      <div
+        class="year"
+      >
+        2022
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
