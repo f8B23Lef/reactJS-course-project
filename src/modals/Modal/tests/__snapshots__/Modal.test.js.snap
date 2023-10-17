@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders Modal snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="modal"
+  >
+    <div
+      class="modal-content"
+    >
+      
+    &lt;div&gt;Children1&lt;/div&gt;
+    &lt;div&gt;Children2&lt;/div&gt;
+  
+    </div>
+  </div>
+</DocumentFragment>
+`;
