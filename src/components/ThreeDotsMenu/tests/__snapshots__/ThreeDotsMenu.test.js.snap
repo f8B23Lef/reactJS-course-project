@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThreeDotsMenu component renders ThreeDotsMenu component snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <svg
+      aria-hidden="true"
+      class="svg-inline--fa fa-ellipsis-vertical tdm__icon "
+      data-icon="ellipsis-vertical"
+      data-prefix="fas"
+      data-testid="tdm-icon"
+      focusable="false"
+      role="img"
+      viewBox="0 0 128 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M56 472a56 56 0 1 1 0-112 56 56 0 1 1 0 112zm0-160a56 56 0 1 1 0-112 56 56 0 1 1 0 112zM0 96a56 56 0 1 1 112 0A56 56 0 1 1 0 96z"
+        fill="currentColor"
+      />
+    </svg>
+    <div
+      class="three-dots-menu hidden"
+    >
+      <svg
+        aria-hidden="true"
+        class="svg-inline--fa fa-xmark tdm-close__icon"
+        data-icon="xmark"
+        data-prefix="fas"
+        data-testid="tdm-close-icon"
+        focusable="false"
+        role="img"
+        viewBox="0 0 320 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"
+          fill="currentColor"
+        />
+      </svg>
+      <button
+        type="button"
+      >
+        Edit
+      </button>
+      <button
+        type="button"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

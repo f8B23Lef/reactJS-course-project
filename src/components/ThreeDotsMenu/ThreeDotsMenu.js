@@ -20,12 +20,14 @@ export default function ThreeDotsMenu(props) {
       <FontAwesomeIcon
         icon={faEllipsisV}
         className={`tdm__icon ${isHovered ? '' : 'hidden'}`}
+        data-testid='tdm-icon'
         onClick={() => setShowTDM(true)}
       />
       <div className={`three-dots-menu ${showTDM ? '' : 'hidden'}`}>
         <FontAwesomeIcon
           icon={faTimes}
           className='tdm-close__icon'
+          data-testid='tdm-close-icon'
           onClick={() => setShowTDM(false)}
         />
         {tdmItems.map(({ itemText, onClick }) => (
