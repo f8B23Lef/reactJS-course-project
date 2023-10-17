@@ -25,6 +25,7 @@ export default function DeleteMovieModal(props) {
         <FontAwesomeIcon
           icon={faTimes}
           className='close__icon'
+          data-testid='close-icon'
           onClick={onClose}
         />
       </div>
